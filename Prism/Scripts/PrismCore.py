@@ -72,8 +72,12 @@ prismLibs = os.getenv("PRISM_LIBS")
 if not prismLibs:
     prismLibs = prismRoot
 
-if not os.path.exists(os.path.join(prismLibs, "PythonLibs")) and os.getenv("PRISM_NO_LIBS") != "1":
-    raise Exception('Prism: Couldn\'t find libraries. Set "PRISM_LIBS" to fix this.')
+if (
+    not os.path.exists(os.path.join(prismLibs, "PythonLibs"))
+    and os.getenv("PRISM_NO_LIBS") != "1"
+    and platform.system() == "Windows"
+   ):
+        raise Exception('Prism: Couldn\'t find libraries. Set "PRISM_LIBS" to fix this.')
 
 scriptPath = os.path.join(prismRoot, "Scripts")
 if scriptPath not in sys.path:
