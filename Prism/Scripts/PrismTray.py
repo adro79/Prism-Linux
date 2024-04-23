@@ -46,7 +46,7 @@ if sys.version[0] == "3":
 if __name__ == "__main__":
     import PrismCore
 
-if platform.system() == "Windows":
+if platform.system() == "Windows" or platform.system() == "Linux":
     import psutil
 
 from qtpy.QtCore import *
@@ -388,6 +388,20 @@ def isAlreadyRunning():
                 if (
                     proc.pid != os.getpid()
                     and os.path.basename(proc.exe()) == "Prism.exe"
+                    and proc.username() == psutil.Process(os.getpid()).username()
+                ):
+                    coreProc.append(proc.pid)
+                    return True
+            except:
+                pass
+
+    elif platform.system() == "Linux":
+        coreProc = []
+        for proc in psutil.process_iter(['pid', 'cmdline', 'username']):
+            try:
+                if (
+                    proc.pid != os.getpid()
+                    and proc.cmdline() == psutil.Process().cmdline()
                     and proc.username() == psutil.Process(os.getpid()).username()
                 ):
                     coreProc.append(proc.pid)
