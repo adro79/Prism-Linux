@@ -307,7 +307,14 @@ class PrismTray:
 
         pythonPath = self.core.getPythonPath(executable="Prism")
         filepath = os.path.join(self.core.prismRoot, "Scripts", "PrismTray.py")
-        cmd = """start "" "%s" "%s" showSplash""" % (pythonPath, filepath)
+
+        if platform.system() == "Windows":
+            cmd = """start "" "%s" "%s" showSplash""" % (pythonPath, filepath)
+        else:
+            cmd = "python %s" % os.path.join(
+                    self.core.prismRoot, "Scripts", "PrismTray.py"
+                )
+
         subprocess.Popen(cmd, cwd=self.core.prismRoot, shell=True)
         sys.exit(0)
 
