@@ -2598,7 +2598,7 @@ class Projects(object):
         @err_catcher(name=__name__)
         def updatePreview(self, load=True):
             if hasattr(self, "loadingGif"):
-                self.loadingGif.setScaledSize(QSize(self.l_preview.width(), self.l_preview.width() / (300/169.0)))
+                self.loadingGif.setScaledSize(QSize(self.l_preview.width(), int(self.l_preview.width() / (300/169.0))))
 
             ppixmap = self.getPreviewImage(load=load)
             if not ppixmap or ppixmap == "loading":
@@ -2617,7 +2617,7 @@ class Projects(object):
             self.loadingGif = QMovie(path, QByteArray(), self) 
             self.loadingGif.setCacheMode(QMovie.CacheAll) 
             self.loadingGif.setSpeed(100) 
-            self.loadingGif.setScaledSize(QSize(self.l_preview.width(), self.l_preview.width() / (300/169.0)))
+            self.loadingGif.setScaledSize(QSize(self.l_preview.width(), int(self.l_preview.width() / (300/169.0))))
             self.l_preview.setMovie(self.loadingGif)
             self.loadingGif.start()
 
@@ -2905,7 +2905,7 @@ class Projects(object):
                 painter.setBrush(brush)
                 painter.setPen(Qt.NoPen)
                 painter.drawRoundedRect(1, 1, self.width()-2, self.height(), 10, 10)
-                painter.drawRect(1, self.height() / 2, self.width()-2, self.height())
+                painter.drawRect(1, int(self.height() / 2), self.width()-2, self.height())
             else:
                 super(Projects.RoundedLabel, self).paintEvent(event)
 
