@@ -328,7 +328,7 @@ class PrismCore:
         if platform.system() == "Windows":
             path = self.getWindowsDocumentsPath()
         elif platform.system() == "Linux":
-            path = os.path.join(os.environ["HOME"])
+            path = os.path.join(os.environ["HOME"], ".config")
         elif platform.system() == "Darwin":
             path = os.path.join(os.environ["HOME"], "Library", "Preferences")
 
