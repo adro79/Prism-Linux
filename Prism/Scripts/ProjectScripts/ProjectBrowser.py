@@ -188,6 +188,7 @@ class ProjectBrowser(QMainWindow, ProjectBrowser_ui.Ui_mw_ProjectBrowser):
         self.helpMenu.addAction(self.actionAbout)
 
         self.menubar.addMenu(self.helpMenu)
+        self.menubar.setNativeMenuBar(0)
 
         self.act_filesizes = QAction("Show filesizes", self)
         self.act_filesizes.setCheckable(True)
