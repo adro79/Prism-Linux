@@ -330,9 +330,7 @@ class ProductBrowser(QDialog, ProductBrowser_ui.Ui_dlg_ProductBrowser):
                 if event.button() == Qt.LeftButton:
                     index = widget.indexAt(event.pos())
                     if index.data() is None:
-                        widget.setCurrentIndex(
-                            widget.model().createIndex(-1, 0)
-                        )
+                        widget.setCurrentItem(None)
                     widget.mouseClickEvent(event)
             elif event.type() == QEvent.MouseButtonPress:
                 item = widget.itemAt(event.pos())
@@ -538,9 +536,7 @@ class ProductBrowser(QDialog, ProductBrowser_ui.Ui_dlg_ProductBrowser):
             row = self.tw_versions.rowAt(pos.y())
 
             if row == -1:
-                self.tw_versions.setCurrentIndex(
-                    self.tw_versions.model().createIndex(-1, 0)
-                )
+                self.tw_versions.setCurrentItem(None)
                 if self.getCurrentProduct() is None:
                     return
 

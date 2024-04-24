@@ -114,9 +114,7 @@ class DependencyViewer(QDialog, DependencyViewer_ui.Ui_dlg_DependencyViewer):
                         self.tw_dependencies.mouseClickEvent(event)
                         index = self.tw_dependencies.indexAt(event.pos())
                         if index.data() == None:
-                            self.tw_dependencies.setCurrentIndex(
-                                self.tw_dependencies.model().createIndex(-1, 0)
-                            )
+                            self.tw_dependencies.setCurrentItem(None)
 
     @err_catcher(name=__name__)
     def rclList(self, listType, pos):

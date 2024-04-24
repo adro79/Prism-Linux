@@ -934,9 +934,7 @@ class EntityPage(QWidget):
                 if event.button() == Qt.LeftButton:
                     index = self.tw_tree.indexAt(event.pos())
                     if index.data() is None:
-                        self.tw_tree.setCurrentIndex(
-                            self.tw_tree.model().createIndex(-1, 0)
-                        )
+                        self.tw_tree.setCurrentItem(None)
 
                     self.tw_tree.mouseClickEvent(event)
             elif event.type() == QEvent.MouseButtonPress:
@@ -1373,7 +1371,7 @@ class EntityPage(QWidget):
             if addOmit:
                 rcmenu.addAction(oAct)
         else:
-            self.tw_tree.setCurrentIndex(self.tw_tree.model().createIndex(-1, 0))
+            self.tw_tree.setCurrentItem(None)
             if self.entityType == "asset":
                 subcat = QAction("Create Folder...", self)
                 iconPath = os.path.join(

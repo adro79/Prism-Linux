@@ -266,9 +266,7 @@ class CreateProject(QDialog, CreateProject_ui.Ui_dlg_createProject):
             if event.button() == Qt.LeftButton:
                 index = self.tw_structure.indexAt(event.pos())
                 if not index.data():
-                    self.tw_structure.setCurrentIndex(
-                        self.tw_structure.model().createIndex(-1, 0)
-                    )
+                    self.tw_structure.setCurrentItem(None)
                 self.tw_structure.mouseClickEvent(event)
 
         else:

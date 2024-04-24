@@ -522,7 +522,7 @@ class SceneBrowser(QWidget, SceneBrowser_ui.Ui_w_sceneBrowser):
             if event.button() == Qt.LeftButton:
                 index = widget.indexAt(event.pos())
                 if index.data() is None:
-                    widget.setCurrentIndex(widget.model().createIndex(-1, 0))
+                    widget.setCurrentItem(None)
                 widget.mouseClickEvent(event)
 
     @err_catcher(name=__name__)
@@ -856,7 +856,7 @@ class SceneBrowser(QWidget, SceneBrowser_ui.Ui_w_sceneBrowser):
                 if i:
                     rcmenu.addAction(i)
         elif "path" in locals():
-            widget.setCurrentIndex(widget.model().createIndex(-1, 0))
+            widget.setCurrentItem(None)
             openex = QAction("Open in explorer", self)
             openex.triggered.connect(lambda: self.core.openFolder(path))
             rcmenu.addAction(openex)

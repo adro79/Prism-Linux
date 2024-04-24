@@ -532,7 +532,7 @@ class %s(QWidget, %s.%s, %s.%sClass):
     @err_catcher(name=__name__)
     def focusImport(self, event):
         self.setListActive(self.tw_import)
-        self.tw_export.setCurrentIndex(self.tw_export.model().createIndex(-1, 0))
+        self.tw_export.setCurrentItem(None)
         event.accept()
 
     @err_catcher(name=__name__)
