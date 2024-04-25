@@ -1,6 +1,6 @@
 # Prism Pipeline
 
-This is the official repository of the Prism Pipeline.
+This is a fork of Prism Pipeline to support Linux.
 
 Prism automates and simplifies the workflow of animation and VFX projects.
 
@@ -21,21 +21,29 @@ For a getting started guide about how to use Prism see the [Documentation](https
 
 ## Installing
 
-**At this time Prism 2 is supported on Windows only.**
+* [Download](https://github.com/adro79/Prism-Linux/archive/refs/heads/main.zip) or clone this repository
+```
+git clone https://github.com/adro79/Prism-Linux
+```
 
-Download the installer from the [website](https://prism-pipeline.com/downloads/)
-(This version allows you to automatically update Prism and install new plugins)
+* Install the following dependencies
 
-or to install Prism manually:
+    * python
+        * imageio
+        * imageio_ffmpeg
+        * numpy
+        * oiio
+        * pkg_resources
+        * psutil
+        * pyside
+    * ffmpeg
 
-* Download or clone this repository and download the [Prism dependencies](https://www.dropbox.com/scl/fi/zh9t0im2qsd6mtlmpd9vs/Prism_dependencies_v2.0.0.zip?rlkey=o0lhrixa5klm3bell35wuhvsy&dl=1).
+* Download [Prism dependencies](https://www.dropbox.com/scl/fi/zh9t0im2qsd6mtlmpd9vs/Prism_dependencies_v2.0.0.zip?rlkey=o0lhrixa5klm3bell35wuhvsy&dl=1).)
 
-* Extract the dependencies and copy the extracted folders into the "Prism" folder of this repository.
+* Extract the CrossPlatform folder to Prism's folder/PythonLibs (We don't need the other folders).
 
-* Now the "Prism" folder should contain the folders like:
-"Plugins", "Python39", "PythonLibs", "Scripts", ...
+* Execute `prism.sh` file to launch Prism.
 
-* Execute the setup.bat file to launch Prism.
 
 ## License
 
