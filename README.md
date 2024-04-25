@@ -38,7 +38,7 @@ git clone https://github.com/adro79/Prism-Linux
         * pyside
     * ffmpeg
 
-* Download [Prism dependencies](https://www.dropbox.com/scl/fi/zh9t0im2qsd6mtlmpd9vs/Prism_dependencies_v2.0.0.zip?rlkey=o0lhrixa5klm3bell35wuhvsy&dl=1).)
+* Download [Prism dependencies](https://www.dropbox.com/scl/fi/zh9t0im2qsd6mtlmpd9vs/Prism_dependencies_v2.0.0.zip?rlkey=o0lhrixa5klm3bell35wuhvsy&dl=1).
 
 * Extract the CrossPlatform folder to Prism's folder/PythonLibs (We don't need the other folders).
 
