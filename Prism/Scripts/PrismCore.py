@@ -1006,7 +1006,7 @@ License: GNU LGPL-3.0-or-later<br>
             dlg.screenGrab = previewImg
             dlg.b_addScreenGrab.setVisible(False)
             dlg.b_removeScreenGrab.setVisible(True)
-            newPos = dlg.pos() - QPoint(0, pmscaled.height() * 0.5)
+            newPos = dlg.pos() - QPoint(0, int(pmscaled.height() * 0.5))
             newPos.setY(max(0, newPos.y()))
             dlg.move(newPos)
 
