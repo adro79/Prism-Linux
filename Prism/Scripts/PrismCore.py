@@ -962,7 +962,7 @@ License: GNU LGPL-3.0-or-later<br>
         fbDlg.layout().insertLayout(fbDlg.layout().count() - 1, fbDlg.lo_screenGrab)
         fbDlg.layout().insertItem(fbDlg.layout().count() - 1, fbDlg.sp_main)
 
-        size = QSize(fbDlg.size().width(), fbDlg.size().height() * 0.7)
+        size = QSize(fbDlg.size().width(), int(fbDlg.size().height() * 0.7))
         fbDlg.b_addScreenGrab.clicked.connect(lambda: self.attachScreenGrab(fbDlg, size=size))
         fbDlg.b_removeScreenGrab.clicked.connect(lambda: self.removeScreenGrab(fbDlg))
         fbDlg.b_removeScreenGrab.setVisible(False)
