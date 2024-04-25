@@ -358,7 +358,10 @@ class PrismCore:
         if os.getenv("PRISM_DATA_DIR"):
             return os.getenv("PRISM_DATA_DIR")
 
-        path = os.path.join(os.environ["PROGRAMDATA"], "Prism2")
+        if platform.system() == "Windows":
+            path = os.path.join(os.environ["PROGRAMDATA"], "Prism2")
+        elif platform.system() == "Linux":
+            path = os.path.join(os.environ["HOME"], ".local", "share", "Prism2")
         return path
 
     @err_catcher(name=__name__)
