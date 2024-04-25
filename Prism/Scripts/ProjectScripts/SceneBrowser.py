@@ -284,7 +284,7 @@ class SceneBrowser(QWidget, SceneBrowser_ui.Ui_w_sceneBrowser):
         self.w_entities.getPage("Shots").entityCreated.connect(self.entityCreated)
 
         self.w_entities.getPage("Shots").shotSaved.connect(self.refreshShotinfo)
-        self.w_entities.getPage("Shots").nextClicked.connect(self.createDepartmentDlg)
+        self.w_entities.getPage("Shots").nextClicked.connect(lambda: self.createDepartmentDlg())
 
         self.w_entities.tabChanged.connect(self.sceneTabChanged)
 

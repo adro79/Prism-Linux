@@ -1350,7 +1350,7 @@ class EntityPage(QWidget):
             if self.entityWidget.parent().objectName() != "w_selEntities":
                 if self.entityType == "asset":
                     openex = QAction("Connect Shots...", self)
-                    openex.triggered.connect(self.openConnectEntitiesDlg)
+                    openex.triggered.connect(lambda: self.openConnectEntitiesDlg())
                     rcmenu.addAction(openex)
                 elif self.entityType == "shot":
                     openex = QAction("Connect Assets...", self)

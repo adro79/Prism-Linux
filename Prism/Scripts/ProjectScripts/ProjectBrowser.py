@@ -181,7 +181,7 @@ class ProjectBrowser(QMainWindow, ProjectBrowser_ui.Ui_mw_ProjectBrowser):
         self.helpMenu.addAction(self.actionWebsite)
 
         self.actionAbout = QAction(self.core.tr("About..."), self)
-        self.actionAbout.triggered.connect(self.core.showAbout)
+        self.actionAbout.triggered.connect(lambda: self.core.showAbout())
         path = os.path.join(self.core.prismRoot, "Scripts", "UserInterfacesPrism", "info.png")
         icon = self.core.media.getColoredIcon(path)
         self.actionAbout.setIcon(icon)
@@ -225,7 +225,7 @@ class ProjectBrowser(QMainWindow, ProjectBrowser_ui.Ui_mw_ProjectBrowser):
         self.refreshRecentMenu()
 
         self.actionSendFeedback = QAction(self.core.tr("Send feedback..."), self)
-        self.actionSendFeedback.triggered.connect(self.core.sendFeedbackDlg)
+        self.actionSendFeedback.triggered.connect(lambda: self.core.sendFeedbackDlg())
         self.menubar.addAction(self.actionSendFeedback)
         self.w_menuCorner = QWidget()
         self.lo_corner = QHBoxLayout()

@@ -376,10 +376,10 @@ class ProjectSettings(QDialog, ProjectSettings_ui.Ui_dlg_ProjectSettings):
         self.chb_prjResolution.toggled.connect(self.prjResolutionToggled)
         self.chb_curPRequirePublishComment.toggled.connect(self.requirePublishCommentToggled)
         self.chb_curPproductTasks.toggled.connect(self.productTasksToggled)
-        self.b_addExportPath.clicked.connect(self.addExportPathClicked)
-        self.b_removeExportPath.clicked.connect(self.removeExportPathClicked)
-        self.b_addRenderPath.clicked.connect(self.addRenderPathClicked)
-        self.b_removeRenderPath.clicked.connect(self.removeRenderPathClicked)
+        self.b_addExportPath.clicked.connect(lambda: self.addExportPathClicked())
+        self.b_removeExportPath.clicked.connect(lambda: self.removeExportPathClicked())
+        self.b_addRenderPath.clicked.connect(lambda: self.addRenderPathClicked())
+        self.b_removeRenderPath.clicked.connect(lambda: self.removeRenderPathClicked())
         self.b_resetStructure.clicked.connect(self.resetProjectStructure)
         self.b_showEnvironment.clicked.connect(self.showEnvironment)
         self.b_importSettings.clicked.connect(self.onImportSettingsClicked)
@@ -392,18 +392,18 @@ class ProjectSettings(QDialog, ProjectSettings_ui.Ui_dlg_ProjectSettings):
         )
 
     @err_catcher(name=__name__)
-    def rclPreview(self, pos):
+    def rclPreview(self, pos=None):
         rcmenu = QMenu(self)
 
         exp = QAction("Browse...", self)
-        exp.triggered.connect(self.browsePreview)
+        exp.triggered.connect(lambda: self.browsePreview())
         rcmenu.addAction(exp)
 
         copAct = QAction("Capture image", self)
-        copAct.triggered.connect(self.capturePreview)
+        copAct.triggered.connect(lambda: self.capturePreview())
         rcmenu.addAction(copAct)
         clipAct = QAction("Paste image from clipboard", self)
-        clipAct.triggered.connect(self.pastePreviewFromClipboard)
+        clipAct.triggered.connect(lambda: self.pastePreviewFromClipboard())
         rcmenu.addAction(clipAct)
 
         rcmenu.exec_(QCursor.pos())
@@ -453,7 +453,7 @@ class ProjectSettings(QDialog, ProjectSettings_ui.Ui_dlg_ProjectSettings):
         rcmenu = QMenu(self)
 
         exp = QAction("Add location", self)
-        exp.triggered.connect(self.addExportLocation)
+        exp.triggered.connect(lambda: self.addExportLocation())
         rcmenu.addAction(exp)
 
         item = self.tw_exportPaths.itemFromIndex(self.tw_exportPaths.indexAt(pos))
@@ -498,7 +498,7 @@ class ProjectSettings(QDialog, ProjectSettings_ui.Ui_dlg_ProjectSettings):
         rcmenu = QMenu(self)
 
         exp = QAction("Add location", self)
-        exp.triggered.connect(self.addRenderLocation)
+        exp.triggered.connect(lambda: self.addRenderLocation())
         rcmenu.addAction(exp)
 
         item = self.tw_renderPaths.itemFromIndex(self.tw_renderPaths.indexAt(pos))

@@ -100,7 +100,7 @@ class PrismSettings(QDialog):
 
         self.bb_main = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel | QDialogButtonBox.Apply)
         self.bb_main.button(QDialogButtonBox.Ok).setText("Save")
-        self.bb_main.button(QDialogButtonBox.Apply).clicked.connect(self.applySettings)
+        self.bb_main.button(QDialogButtonBox.Apply).clicked.connect(lambda: self.applySettings())
         self.bb_main.accepted.connect(self.accept)
         self.bb_main.accepted.connect(self.saveSettings)
         self.bb_main.rejected.connect(self.reject)
@@ -604,7 +604,7 @@ class UserSettings(QDialog, UserSettings_ui.Ui_dlg_UserSettings):
         self.b_loadPlugin.setContextMenuPolicy(Qt.CustomContextMenu)
         self.b_loadPlugin.customContextMenuRequested.connect(self.rclLoadPlugin)
         self.b_reloadPlugins.clicked.connect(self.reloadPlugins)
-        self.b_createPlugin.clicked.connect(self.createPluginWindow)
+        self.b_createPlugin.clicked.connect(lambda: self.createPluginWindow())
         self.b_showEnvironment.clicked.connect(self.showEnvironment)
         self.cb_styleSheet.currentIndexChanged.connect(self.onStyleSheetChanged)
         self.b_importSettings.clicked.connect(self.onImportSettingsClicked)

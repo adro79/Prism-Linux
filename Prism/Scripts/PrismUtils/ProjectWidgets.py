@@ -277,14 +277,14 @@ class CreateProject(QDialog, CreateProject_ui.Ui_dlg_createProject):
         rcmenu = QMenu(self)
 
         exp = QAction("Browse...", self)
-        exp.triggered.connect(self.browsePreview)
+        exp.triggered.connect(lambda: self.browsePreview())
         rcmenu.addAction(exp)
 
         copAct = QAction("Capture image", self)
-        copAct.triggered.connect(self.capturePreview)
+        copAct.triggered.connect(lambda: self.capturePreview())
         rcmenu.addAction(copAct)
         clipAct = QAction("Paste image from clipboard", self)
-        clipAct.triggered.connect(self.pastePreviewFromClipboard)
+        clipAct.triggered.connect(lambda: self.pastePreviewFromClipboard())
         rcmenu.addAction(clipAct)
 
         rcmenu.exec_(QCursor.pos())
