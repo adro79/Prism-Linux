@@ -33,9 +33,8 @@ git clone https://github.com/adro79/Prism-Linux
         * imageio_ffmpeg
         * numpy
         * oiio
-        * pkg_resources
         * psutil
-        * pyside
+        * pyside2 / pyside6
     * ffmpeg
 
 * Download [Prism dependencies](https://www.dropbox.com/scl/fi/zh9t0im2qsd6mtlmpd9vs/Prism_dependencies_v2.0.0.zip?rlkey=o0lhrixa5klm3bell35wuhvsy&dl=1).
