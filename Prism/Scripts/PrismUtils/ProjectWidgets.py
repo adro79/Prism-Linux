@@ -216,7 +216,6 @@ class CreateProject(QDialog, CreateProject_ui.Ui_dlg_createProject):
 
     @err_catcher(name=__name__)
     def connectEvents(self):
-        self.b_browse.clicked.connect(self.browse)
         self.b_browse.clicked.connect(lambda: self.browse())
         self.e_name.textEdited.connect(self.nameChanged)
         self.e_path.textEdited.connect(lambda x: self.validateText(x, self.e_path))
