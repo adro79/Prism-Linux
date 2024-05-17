@@ -817,9 +817,9 @@ class SceneBrowser(QWidget, SceneBrowser_ui.Ui_w_sceneBrowser):
 
         createAct = QAction(label, self)
         if widgetType == "department":
-            createAct.triggered.connect(self.createDepartmentDlg)
+            createAct.triggered.connect(lambda: self.createDepartmentDlg())
         else:
-            createAct.triggered.connect(self.createTaskDlg)
+            createAct.triggered.connect(lambda: self.createTaskDlg())
 
         rcmenu.addAction(createAct)
         if widgetType == "department":
@@ -2806,7 +2806,7 @@ class ScenefileItem(QWidget):
         copAct.triggered.connect(lambda: self.captureScenePreview(self.data))
 
         exp = QAction("Browse preview...", self.browser)
-        exp.triggered.connect(self.browseScenePreview)
+        exp.triggered.connect(lambda: self.browseScenePreview())
         rcmenu.addAction(exp)
 
         rcmenu.addAction(copAct)
@@ -2817,7 +2817,7 @@ class ScenefileItem(QWidget):
         rcmenu.addAction(clipAct)
 
         prvAct = QAction("Set as %spreview" % self.data.get("type", ""), self)
-        prvAct.triggered.connect(self.setPreview)
+        prvAct.triggered.connect(lambda: self.setPreview())
         rcmenu.addAction(prvAct)
         rcmenu.exec_(QCursor.pos())
 

@@ -231,18 +231,18 @@ class ProjectSettings(QDialog, ProjectSettings_ui.Ui_dlg_ProjectSettings):
         self.b_removeTaskPresetsAsset.setIcon(icon)
         self.b_removeTaskPresetsShot.setIcon(icon)
 
-        self.b_assetDepAdd.clicked.connect(self.addAssetDepartmentClicked)
-        self.b_assetDepRemove.clicked.connect(self.removeAssetDepartmentClicked)
-        self.b_addTaskPresetsAsset.clicked.connect(self.addTaskPresetsAssetClicked)
-        self.b_removeTaskPresetsAsset.clicked.connect(self.removeTaskPresetsAssetClicked)
-        self.b_addTaskPresetsShot.clicked.connect(self.addTaskPresetsShotClicked)
-        self.b_removeTaskPresetsShot.clicked.connect(self.removeTaskPresetsShotClicked)
+        self.b_assetDepAdd.clicked.connect(lambda: self.addAssetDepartmentClicked())
+        self.b_assetDepRemove.clicked.connect(lambda: self.removeAssetDepartmentClicked())
+        self.b_addTaskPresetsAsset.clicked.connect(lambda: self.addTaskPresetsAssetClicked())
+        self.b_removeTaskPresetsAsset.clicked.connect(lambda: self.removeTaskPresetsAssetClicked())
+        self.b_addTaskPresetsShot.clicked.connect(lambda: self.addTaskPresetsShotClicked())
+        self.b_removeTaskPresetsShot.clicked.connect(lambda: self.removeTaskPresetsShotClicked())
 
         self.tw_assetDepartments.verticalHeader().setSectionsMovable(True)
         self.tw_assetDepartments.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
         self.tw_assetDepartments.customContextMenuRequested.connect(self.assetDepsRightClicked)
         self.tw_assetDepartments.verticalHeader().sectionMoved.connect(self.assetDepartmentRowMoved)
-        self.tw_assetDepartments.itemDoubleClicked.connect(self.assetDepartmentDoubleClicked)
+        self.tw_assetDepartments.itemDoubleClicked.connect(lambda: self.assetDepartmentDoubleClicked())
         self.tw_assetDepartments.horizontalHeader().setDefaultAlignment(Qt.AlignLeft)
 
         self.b_shotDepAdd = QToolButton()
@@ -264,19 +264,19 @@ class ProjectSettings(QDialog, ProjectSettings_ui.Ui_dlg_ProjectSettings):
         )
         icon = self.core.media.getColoredIcon(path)
         self.b_shotDepRemove.setIcon(icon)
-        self.b_shotDepAdd.clicked.connect(self.addShotDepartmentClicked)
-        self.b_shotDepRemove.clicked.connect(self.removeShotDepartmentClicked)
+        self.b_shotDepAdd.clicked.connect(lambda: self.addShotDepartmentClicked())
+        self.b_shotDepRemove.clicked.connect(lambda: self.removeShotDepartmentClicked())
         self.tw_shotDepartments.verticalHeader().setSectionsMovable(True)
         self.tw_shotDepartments.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
-        self.tw_shotDepartments.customContextMenuRequested.connect(self.shotDepsRightClicked)
-        self.tw_shotDepartments.verticalHeader().sectionMoved.connect(self.shotDepartmentRowMoved)
+        self.tw_shotDepartments.customContextMenuRequested.connect(lambda: self.shotDepsRightClicked())
+        self.tw_shotDepartments.verticalHeader().sectionMoved.connect(lambda: self.shotDepartmentRowMoved())
         self.tw_shotDepartments.itemDoubleClicked.connect(self.shotDepartmentDoubleClicked)
         self.tw_shotDepartments.horizontalHeader().setDefaultAlignment(Qt.AlignLeft)
 
         self.lw_taskPresetsAsset.customContextMenuRequested.connect(self.assetTaskPresetsRightClicked)
-        self.lw_taskPresetsAsset.itemDoubleClicked.connect(self.assetTaskPresetsDoubleClicked)
+        self.lw_taskPresetsAsset.itemDoubleClicked.connect(lambda: self.assetTaskPresetsDoubleClicked())
         self.lw_taskPresetsShot.customContextMenuRequested.connect(self.shotTaskPresetsRightClicked)
-        self.lw_taskPresetsShot.itemDoubleClicked.connect(self.shotTaskPresetDoubleClicked)
+        self.lw_taskPresetsShot.itemDoubleClicked.connect(lambda: self.shotTaskPresetDoubleClicked())
 
         path = os.path.join(
             self.core.prismRoot, "Scripts", "UserInterfacesPrism", "import.png"
@@ -1302,7 +1302,7 @@ class ProjectSettings(QDialog, ProjectSettings_ui.Ui_dlg_ProjectSettings):
             clipAct.setEnabled(False)
 
         clipAct = QAction("Restore defaults", self)
-        clipAct.triggered.connect(self.restoreAssetDepsTriggered)
+        clipAct.triggered.connect(lambda: self.restoreAssetDepsTriggered())
         rcmenu.addAction(clipAct)
 
         rcmenu.exec_(QCursor.pos())

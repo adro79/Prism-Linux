@@ -194,7 +194,7 @@ class CreateProject(QDialog, CreateProject_ui.Ui_dlg_createProject):
         self.w_completeButtons = QWidget()
         self.lo_completeButtons = QHBoxLayout(self.w_completeButtons)
         self.b_completeBrowser = QPushButton("Open Project Browser")
-        self.b_completeBrowser.clicked.connect(self.core.projectBrowser)
+        self.b_completeBrowser.clicked.connect(lambda: self.core.projectBrowser())
         self.b_completeBrowser.clicked.connect(self.accept)
         self.b_completeExplorer = QPushButton("Open in Explorer")
         self.b_completeExplorer.clicked.connect(lambda: self.core.openFolder(self.core.projectPath))
@@ -217,6 +217,7 @@ class CreateProject(QDialog, CreateProject_ui.Ui_dlg_createProject):
     @err_catcher(name=__name__)
     def connectEvents(self):
         self.b_browse.clicked.connect(self.browse)
+        self.b_browse.clicked.connect(lambda: self.browse())
         self.e_name.textEdited.connect(self.nameChanged)
         self.e_path.textEdited.connect(lambda x: self.validateText(x, self.e_path))
 
@@ -230,7 +231,7 @@ class CreateProject(QDialog, CreateProject_ui.Ui_dlg_createProject):
         self.tw_structure.mouseReleaseEvent = lambda x: self.mouseClickEvent(x)
         self.tw_structure.customContextMenuRequested.connect(self.rclTree)
 
-        self.b_create.clicked.connect(self.createClicked)
+        self.b_create.clicked.connect(lambda: self.createClicked())
 
         self.cb_settings.activated.connect(lambda x: self.reloadSettings())
         self.e_projectSettings.editingFinished.connect(self.reloadSettings)
@@ -242,7 +243,7 @@ class CreateProject(QDialog, CreateProject_ui.Ui_dlg_createProject):
         self.b_reload.clicked.connect(self.reloadSettings)
         self.b_addPreset.clicked.connect(self.createPresetDlg)
         self.b_managePresets.clicked.connect(self.managePresets)
-        self.b_projectSettings.clicked.connect(self.browseProjectSettings)
+        self.b_projectSettings.clicked.connect(lambda: self.browseProjectSettings())
 
     @err_catcher(name=__name__)
     def nameChanged(self, name):
