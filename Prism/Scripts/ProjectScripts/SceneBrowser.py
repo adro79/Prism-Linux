@@ -1830,7 +1830,7 @@ class SceneBrowser(QWidget, SceneBrowser_ui.Ui_w_sceneBrowser):
 
         if entity["type"] == "asset":
             exp = QAction("Edit asset description...", self)
-            exp.triggered.connect(self.editAsset)
+            exp.triggered.connect(lambda: self.editAsset())
             rcmenu.addAction(exp)
 
             copAct = QAction("Capture assetpreview", self)
@@ -2858,7 +2858,7 @@ class ScenefileItem(QWidget):
         copAct.triggered.connect(lambda: self.captureScenePreview(self.data))
 
         exp = QAction("Browse preview...", self.browser)
-        exp.triggered.connect(self.browseScenePreview)
+        exp.triggered.connect(lambda: self.browseScenePreview())
         rcmenu.addAction(exp)
 
         rcmenu.addAction(copAct)
@@ -2869,7 +2869,7 @@ class ScenefileItem(QWidget):
         rcmenu.addAction(clipAct)
 
         prvAct = QAction("Set as %spreview" % self.data.get("type", ""), self)
-        prvAct.triggered.connect(self.setPreview)
+        prvAct.triggered.connect(lambda: self.setPreview())
         rcmenu.addAction(prvAct)
         rcmenu.exec_(QCursor.pos())
 

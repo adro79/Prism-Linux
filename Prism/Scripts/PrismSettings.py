@@ -100,7 +100,7 @@ class PrismSettings(QDialog):
 
         self.bb_main = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel | QDialogButtonBox.Apply)
         self.bb_main.button(QDialogButtonBox.Ok).setText("Save")
-        self.bb_main.button(QDialogButtonBox.Apply).clicked.connect(self.applySettings)
+        self.bb_main.button(QDialogButtonBox.Apply).clicked.connect(lambda: self.applySettings())
         self.bb_main.accepted.connect(self.accept)
         self.bb_main.accepted.connect(self.saveSettings)
         self.bb_main.rejected.connect(self.reject)
@@ -355,7 +355,7 @@ class UserSettings(QDialog, UserSettings_ui.Ui_dlg_UserSettings):
             self.gb_installHub = QGroupBox("Hub")
             self.lo_installHub = QHBoxLayout(self.gb_installHub)
             self.b_installHub = QPushButton("Install Hub")
-            self.b_installHub.clicked.connect(self.core.plugins.installHub)
+            self.b_installHub.clicked.connect(lambda: self.core.plugins.installHub())
             self.l_installHub = QLabel("Allows you to install plugins and update your Prism version.")
             self.lo_installHub.addWidget(self.b_installHub)
             self.lo_installHub.addWidget(self.l_installHub)
@@ -591,25 +591,25 @@ class UserSettings(QDialog, UserSettings_ui.Ui_dlg_UserSettings):
                 lambda y=None, x=i: self.integrationRemove(x)
             )
 
-        self.b_manageProjects.clicked.connect(self.core.projects.setProject)
+        self.b_manageProjects.clicked.connect(lambda: self.core.projects.setProject())
 
-        self.b_startTray.clicked.connect(self.startTray)
+        self.b_startTray.clicked.connect(lambda: self.startTray())
         self.chb_trayStartup.toggled.connect(self.onTrayChanged)
         self.b_browseMediaPlayer.clicked.connect(lambda: self.browse("mediaPlayer", getFile=True))
         self.b_browseMediaPlayer.customContextMenuRequested.connect(
             lambda: self.core.openFolder(self.e_mediaPlayerPath.text())
         )
         self.tw_plugins.customContextMenuRequested.connect(self.rclPluginList)
-        self.b_managePlugins.clicked.connect(self.managePluginsDlg)
-        self.b_loadPlugin.clicked.connect(self.loadExternalPlugin)
+        self.b_managePlugins.clicked.connect(lambda: self.managePluginsDlg())
+        self.b_loadPlugin.clicked.connect(lambda: self.loadExternalPlugin())
         self.b_loadPlugin.setContextMenuPolicy(Qt.CustomContextMenu)
         self.b_loadPlugin.customContextMenuRequested.connect(self.rclLoadPlugin)
-        self.b_reloadPlugins.clicked.connect(self.reloadPlugins)
-        self.b_createPlugin.clicked.connect(self.createPluginWindow)
-        self.b_showEnvironment.clicked.connect(self.showEnvironment)
+        self.b_reloadPlugins.clicked.connect(lambda: self.reloadPlugins())
+        self.b_createPlugin.clicked.connect(lambda: self.createPluginWindow())
+        self.b_showEnvironment.clicked.connect(lambda: self.showEnvironment())
         self.cb_styleSheet.currentIndexChanged.connect(self.onStyleSheetChanged)
-        self.b_importSettings.clicked.connect(self.onImportSettingsClicked)
-        self.b_exportSettings.clicked.connect(self.onExportSettingsClicked)
+        self.b_importSettings.clicked.connect(lambda: self.onImportSettingsClicked())
+        self.b_exportSettings.clicked.connect(lambda: self.onExportSettingsClicked())
         self.buttonBox.accepted.connect(self.saveSettings)
         self.buttonBox.button(QDialogButtonBox.Apply).clicked.connect(
             lambda: self.saveSettings(changeProject=False)
@@ -741,7 +741,7 @@ class UserSettings(QDialog, UserSettings_ui.Ui_dlg_UserSettings):
         rcmenu = QMenu(self)
 
         exp = QAction("Add row", self)
-        exp.triggered.connect(self.addEnvironmentRow)
+        exp.triggered.connect(lambda: self.addEnvironmentRow())
         rcmenu.addAction(exp)
 
         item = self.tw_environment.itemFromIndex(self.tw_environment.indexAt(pos))
@@ -1574,7 +1574,7 @@ class CreatePluginDialog(QDialog):
         self.cb_location.activated.connect(
             lambda x: self.b_browse.setVisible(self.cb_location.currentText() == "Custom")
         )
-        self.b_browse.clicked.connect(self.browse)
+        self.b_browse.clicked.connect(lambda: self.browse())
         self.b_browse.customContextMenuRequested.connect(
             lambda: self.core.openFolder(self.e_path.text())
         )
@@ -1675,7 +1675,7 @@ class AddProductPathDialog(QDialog):
     def connectEvents(self):
         self.e_name.textChanged.connect(lambda x: self.validate(self.e_name, x))
         self.e_path.textChanged.connect(lambda x: self.validate(self.e_path, x))
-        self.b_browse.clicked.connect(self.browse)
+        self.b_browse.clicked.connect(lambda: self.browse())
         self.b_browse.customContextMenuRequested.connect(
             lambda: self.core.openFolder(self.e_path.text())
         )
@@ -1890,10 +1890,10 @@ class ManagePluginPaths(QDialog):
         self.bb_main.buttons()[0].setText("OK (changes require Prism restart)")
         self.bb_main.accepted.connect(self.accept)
 
-        self.b_addPath.clicked.connect(self.addPluginPath)
-        self.b_removePath.clicked.connect(self.removePluginPaths)
-        self.b_addSearchPath.clicked.connect(self.addPluginSearchpath)
-        self.b_removeSearchPath.clicked.connect(self.removePluginSearchpaths)
+        self.b_addPath.clicked.connect(lambda: self.addPluginPath())
+        self.b_removePath.clicked.connect(lambda: self.removePluginPaths())
+        self.b_addSearchPath.clicked.connect(lambda: self.addPluginSearchpath())
+        self.b_removeSearchPath.clicked.connect(lambda: self.removePluginSearchpaths())
 
         self.lo_main.addWidget(self.bb_main)
 
@@ -2101,11 +2101,11 @@ class ManagePluginPaths(QDialog):
         rcmenu.addAction(openex)
 
         openex = QAction("Add path...", self)
-        openex.triggered.connect(self.addPluginPath)
+        openex.triggered.connect(lambda: self.addPluginPath())
         rcmenu.addAction(openex)
 
         openex = QAction("Remove", self)
-        openex.triggered.connect(self.removePluginPaths)
+        openex.triggered.connect(lambda: self.removePluginPaths())
         rcmenu.addAction(openex)
 
         if len(items) == 1:
