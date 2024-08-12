@@ -555,9 +555,7 @@ class SceneBrowser(QWidget, SceneBrowser_ui.Ui_w_sceneBrowser):
             if event.button() == Qt.LeftButton:
                 index = widget.indexAt(event.pos())
                 if index.data() is None:
-                    widget.setCurrentIndex(
-                        widget.model().createIndex(-1, 0)
-                    )
+                    widget.setCurrentItem(None)
 
                 widget.mouseClickEvent(event)
 
@@ -921,9 +919,7 @@ class SceneBrowser(QWidget, SceneBrowser_ui.Ui_w_sceneBrowser):
             )
         else:
             filepath = ""
-            self.tw_scenefiles.setCurrentIndex(
-                self.tw_scenefiles.model().createIndex(-1, 0)
-            )
+            self.tw_scenefiles.setCurrentItem(None)
 
         self.openScenefileContextMenu(filepath)
 

@@ -46,7 +46,7 @@ if sys.version[0] == "3":
 if __name__ == "__main__":
     import PrismCore
 
-if platform.system() == "Windows":
+if platform.system() == "Windows" or platform.system() == "Linux":
     import psutil
 
 from qtpy.QtCore import *
@@ -307,7 +307,14 @@ class PrismTray:
 
         pythonPath = self.core.getPythonPath(executable="Prism")
         filepath = os.path.join(self.core.prismRoot, "Scripts", "PrismTray.py")
-        cmd = """start "" "%s" "%s" showSplash ignore_pid=%s""" % (pythonPath, filepath, os.getpid())
+
+        if platform.system() == "Windows":
+            cmd = """start "" "%s" "%s" showSplash""" % (pythonPath, filepath)
+        else:
+            cmd = "python %s" % os.path.join(
+                    self.core.prismRoot, "Scripts", "PrismTray.py"
+                )
+
         subprocess.Popen(cmd, cwd=self.core.prismRoot, shell=True)
         sys.exit(0)
 
@@ -396,6 +403,20 @@ def isAlreadyRunning():
                 if (
                     proc.pid not in ignoredPids
                     and os.path.basename(proc.exe()) == "Prism.exe"
+                    and proc.username() == psutil.Process(os.getpid()).username()
+                ):
+                    coreProc.append(proc.pid)
+                    return True
+            except:
+                pass
+
+    elif platform.system() == "Linux":
+        coreProc = []
+        for proc in psutil.process_iter(['pid', 'cmdline', 'username']):
+            try:
+                if (
+                    proc.pid != os.getpid()
+                    and proc.cmdline() == psutil.Process().cmdline()
                     and proc.username() == psutil.Process(os.getpid()).username()
                 ):
                     coreProc.append(proc.pid)
