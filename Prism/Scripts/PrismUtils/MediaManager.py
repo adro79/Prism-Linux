@@ -498,7 +498,7 @@ class MediaManager(object):
         argList += [outputpath, "-y"]
         logger.debug("Run ffmpeg with this settings: " + str(argList))
         nProc = subprocess.Popen(
-            argList, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+            argList, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False
         )
         result = nProc.communicate()
 
