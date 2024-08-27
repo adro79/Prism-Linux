@@ -84,7 +84,7 @@ scriptPath = os.path.join(prismRoot, "Scripts")
 if scriptPath not in sys.path:
     sys.path.append(scriptPath)
 
-pyLibPath = os.path.join(prismLibs, "PythonLibs", pyLibs)
+pyLibPath = os.path.join(prismLibs, "PythonLibs")
 cpLibs = os.path.join(prismLibs, "PythonLibs", "CrossPlatform")
 
 if cpLibs not in sys.path:
