@@ -26,7 +26,7 @@ For a getting started guide about how to use Prism see the [Documentation](https
 
 ## Installing
 
-* [Download](https://github.com/adro79/Prism-Linux/archive/refs/heads/main.zip) from the releases
+* Download from the releases or [here](https://github.com/adro79/Prism-Linux/releases/download/v2.0.10-linux-1/Prism-v2.0.10-linux-1.tar.gz).
 
 * Install `ffmpeg` and `openimageio` from your distro.
 
