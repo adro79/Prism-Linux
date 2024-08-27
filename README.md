@@ -1,6 +1,11 @@
 # Prism Pipeline
 
-This is the official repository of the Prism Pipeline.
+This is an unofficial fork of Prism Pipeline to support Linux. 
+
+Keep in mind I don't consider this as production-ready since I'm only using it for my personal projects. Please wait util official Prism Support or else help support this fork.
+
+Discord Thread: https://discord.com/channels/837324823180083240/1137119723927117995
+
 
 Prism automates and simplifies the workflow of animation and VFX projects.
 
@@ -21,20 +26,12 @@ For a getting started guide about how to use Prism see the [Documentation](https
 
 ## Installing
 
-**At this time Prism 2 is supported on Windows only.**
+* [Download](https://github.com/adro79/Prism-Linux/archive/refs/heads/main.zip) from the releases
 
-Download the installer from the [website](https://prism-pipeline.com/downloads/)
-(This version allows you to automatically update Prism and install new plugins)
+* Install `ffmpeg` and `openimageio` from your distro.
 
-or to install Prism manually:
-* Download or clone this repository and download the [Prism dependencies](https://www.dropbox.com/scl/fi/bmgsht89nb9u04sqprzrp/Prism_dependencies_v2.0.5.zip?rlkey=wy0rtw56chky6kt1mnxnept0t&st=jkiho4o9&dl=1).
+* Execute `prism.sh` file to launch Prism.
 
-* Extract the dependencies and copy the extracted folders into the "Prism" folder of this repository.
-
-* Now the "Prism" folder should contain the folders like:
-"Plugins", "Python39", "PythonLibs", "Scripts", ...
-
-* Execute the setup.bat file to launch Prism.
 
 ## License
 
